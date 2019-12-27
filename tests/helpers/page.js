@@ -5,7 +5,8 @@ const userFactory = require("../factories/userFactory");
 class Page {
   static async build() {
     const browser = await puppeteer.launch({
-      headless: false
+      headless: true,
+      args: ["--no-sandbox"]
     });
     const page = await browser.newPage();
     const customPage = new Page(page);
@@ -21,7 +22,7 @@ class Page {
     this.page = page;
   }
 
-  async login(redirectUrl = "localhost:3000/blogs") {
+  async login(redirectUrl = "http://localhost:3000/blogs") {
     const user = await userFactory();
     const { session, sig } = sessionFactory(user);
 
