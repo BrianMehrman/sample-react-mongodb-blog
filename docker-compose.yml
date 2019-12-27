@@ -1,0 +1,15 @@
+version: '3'
+services:
+  redis-service:
+    image: 'redis'
+    ports:
+      - "6379:6379"
+  mongodb-service:
+    image: 'mvertes/alpine-mongo'
+    ports:
+      - "27017:27017"
+  # node-app:
+  #   restart: unless-stopped
+  #   build: .
+  #   ports:
+  #     - "4001:8081"
